@@ -1,0 +1,973 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Hub - Free AI Tools for Your Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #4d44db;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7ff;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .tool-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .tool-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .result-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>AI Tools Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#tools">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">8 Powerful AI Tools for Your Website</h1>
+            <p class="lead mb-5">Free AI-powered tools to enhance your content creation and productivity</p>
+            <a href="#tools" class="btn btn-light btn-lg px-4 me-2">Explore Tools</a>
+            <a href="#about" class="btn btn-outline-light btn-lg px-4">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section id="tools" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our AI Tools</h2>
+                <p class="text-muted">Click on any tool to start using it</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- AI Text Generator -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('text-generator')">
+                        <div class="tool-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <h5>AI Text Generator</h5>
+                        <p class="text-muted">ChatGPT style text generation</p>
+                    </div>
+                </div>
+                
+                <!-- AI Image Generator -->
+                <div id="text-generator-tool" class="tool-container hidden">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3><i class="fas fa-comment-dots me-2"></i> AI Text Generator</h3>
+        <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('text-generator')">
+            <i class="fas fa-times"></i> Close
+        </button>
+    </div>
+    <!-- Embed from ChatGPT or similar -->
+    <iframe 
+        src="https://chat.openai.com/chat" 
+        style="width:100%; height:500px; border:none; border-radius:10px;"
+        title="AI Text Generator"
+    ></iframe>
+    <p class="mt-2 small text-muted">Note: This embeds ChatGPT. For a free alternative, consider <a href="https://huggingface.co/chat" target="_blank">HuggingChat</a>.</p>
+</div>
+                
+                <!-- Text to Speech -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('text-to-speech')">
+                        <div class="tool-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h5>Text to Speech</h5>
+                        <p class="text-muted">Realistic voice generation</p>
+                    </div>
+                </div>
+                
+                <!-- Text Summarizer -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('text-summarizer')">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h5>Text Summarizer</h5>
+                        <p class="text-muted">Summarize articles or paragraphs</p>
+                    </div>
+                </div>
+                
+                <!-- YouTube Title Generator -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('youtube-generator')">
+                        <div class="tool-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h5>YouTube Title Generator</h5>
+                        <p class="text-muted">Generate titles & descriptions</p>
+                    </div>
+                </div>
+                
+                <!-- Paraphrasing Tool -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('paraphrasing-tool')">
+                        <div class="tool-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h5>Paraphrasing Tool</h5>
+                        <p class="text-muted">Rewrite content</p>
+                    </div>
+                </div>
+                
+                <!-- SEO Keyword Extractor -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('seo-keyword')">
+                        <div class="tool-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h5>SEO Keyword Extractor</h5>
+                        <p class="text-muted">Extract keywords from content</p>
+                    </div>
+                </div>
+                
+                <!-- AI Resume Builder -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="tool-card card text-center p-4" onclick="showTool('resume-builder')">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-user"></i>
+                        </div>
+                        <h5>AI Resume Builder</h5>
+                        <p class="text-muted">Create professional resumes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Sections -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <!-- AI Text Generator Tool -->
+            <div id="text-generator-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-comment-dots me-2"></i> AI Text Generator</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('text-generator')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="text-prompt" class="form-label">Enter your prompt:</label>
+                    <textarea class="form-control" id="text-prompt" rows="3" placeholder="Type your question or prompt here..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="text-style" class="form-label">Style:</label>
+                    <select class="form-select" id="text-style">
+                        <option value="creative">Creative</option>
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="technical">Technical</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="generateText()">Generate Text</button>
+                <div class="loading-spinner" id="text-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Generating your text...</p>
+                </div>
+                <div class="result-container mt-3" id="text-result">
+                    <!-- Generated text will appear here -->
+                </div>
+            </div>
+
+            <!-- AI Image Generator Tool -->
+            <div id="image-generator-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-image me-2"></i> AI Image Generator</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('image-generator')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="image-prompt" class="form-label">Describe the image you want to generate:</label>
+                    <textarea class="form-control" id="image-prompt" rows="3" placeholder="A futuristic cityscape at sunset with flying cars..."></textarea>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="image-style" class="form-label">Style:</label>
+                        <select class="form-select" id="image-style">
+                            <option value="realistic">Realistic</option>
+                            <option value="cartoon">Cartoon</option>
+                            <option value="abstract">Abstract</option>
+                            <option value="watercolor">Watercolor</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="image-size" class="form-label">Size:</label>
+                        <select class="form-select" id="image-size">
+                            <option value="256x256">Small (256x256)</option>
+                            <option value="512x512" selected>Medium (512x512)</option>
+                            <option value="1024x1024">Large (1024x1024)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="generateImage()">Generate Image</button>
+                <div class="loading-spinner" id="image-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Generating your image...</p>
+                </div>
+                <div class="result-container mt-3 text-center" id="image-result">
+                    <!-- Generated image will appear here -->
+                </div>
+            </div>
+
+            <!-- Text to Speech Tool -->
+            <div id="text-to-speech-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-volume-up me-2"></i> Text to Speech</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('text-to-speech')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="tts-text" class="form-label">Enter text to convert to speech:</label>
+                    <textarea class="form-control" id="tts-text" rows="5" placeholder="Type the text you want to convert to speech here..."></textarea>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="tts-voice" class="form-label">Voice:</label>
+                        <select class="form-select" id="tts-voice">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="child">Child</option>
+                            <option value="elderly">Elderly</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tts-speed" class="form-label">Speed:</label>
+                        <select class="form-select" id="tts-speed">
+                            <option value="slow">Slow</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="fast">Fast</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary me-2" onclick="generateSpeech()">Generate Speech</button>
+                <button class="btn btn-outline-primary" id="play-btn" disabled onclick="playSpeech()">
+                    <i class="fas fa-play"></i> Play
+                </button>
+                <div class="loading-spinner" id="tts-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Generating speech...</p>
+                </div>
+                <div class="result-container mt-3" id="tts-result">
+                    <!-- Audio player will appear here -->
+                </div>
+            </div>
+
+            <!-- Text Summarizer Tool -->
+            <div id="text-summarizer-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-file-contract me-2"></i> Text Summarizer</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('text-summarizer')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="summarizer-text" class="form-label">Enter the text you want to summarize:</label>
+                    <textarea class="form-control" id="summarizer-text" rows="8" placeholder="Paste your article or long text here..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="summarizer-length" class="form-label">Summary Length:</label>
+                    <select class="form-select" id="summarizer-length">
+                        <option value="short">Short (1-2 sentences)</option>
+                        <option value="medium" selected>Medium (3-5 sentences)</option>
+                        <option value="long">Long (paragraph)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="summarizeText()">Summarize</button>
+                <div class="loading-spinner" id="summarizer-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Summarizing text...</p>
+                </div>
+                <div class="result-container mt-3" id="summarizer-result">
+                    <!-- Summary will appear here -->
+                </div>
+            </div>
+
+            <!-- YouTube Title Generator Tool -->
+            <div id="youtube-generator-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fab fa-youtube me-2"></i> YouTube Title & Description Generator</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('youtube-generator')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="youtube-topic" class="form-label">Video Topic:</label>
+                    <input type="text" class="form-control" id="youtube-topic" placeholder="What is your video about?">
+                </div>
+                <div class="mb-3">
+                    <label for="youtube-style" class="form-label">Style:</label>
+                    <select class="form-select" id="youtube-style">
+                        <option value="clickbait">Clickbait</option>
+                        <option value="professional">Professional</option>
+                        <option value="casual" selected>Casual</option>
+                        <option value="educational">Educational</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="generateYouTubeContent()">Generate</button>
+                <div class="loading-spinner" id="youtube-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Generating YouTube content...</p>
+                </div>
+                <div class="result-container mt-3" id="youtube-result">
+                    <div class="mb-3">
+                        <h5>Suggested Titles:</h5>
+                        <div id="youtube-titles"></div>
+                    </div>
+                    <div>
+                        <h5>Suggested Description:</h5>
+                        <div id="youtube-description"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paraphrasing Tool -->
+            <div id="paraphrasing-tool-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-exchange-alt me-2"></i> Paraphrasing Tool</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('paraphrasing-tool')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="paraphrase-text" class="form-label">Enter text to paraphrase:</label>
+                    <textarea class="form-control" id="paraphrase-text" rows="8" placeholder="Enter the text you want to rewrite..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="paraphrase-level" class="form-label">Paraphrasing Level:</label>
+                    <select class="form-select" id="paraphrase-level">
+                        <option value="light">Light (similar to original)</option>
+                        <option value="medium" selected>Medium (balanced)</option>
+                        <option value="heavy">Heavy (very different)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="paraphraseText()">Paraphrase</button>
+                <div class="loading-spinner" id="paraphrase-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Paraphrasing text...</p>
+                </div>
+                <div class="result-container mt-3" id="paraphrase-result">
+                    <!-- Paraphrased text will appear here -->
+                </div>
+            </div>
+
+            <!-- SEO Keyword Extractor Tool -->
+            <div id="seo-keyword-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-key me-2"></i> SEO Keyword Extractor</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('seo-keyword')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <label for="seo-text" class="form-label">Enter your content:</label>
+                    <textarea class="form-control" id="seo-text" rows="8" placeholder="Paste your article or content here..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="keyword-count" class="form-label">Number of Keywords:</label>
+                    <select class="form-select" id="keyword-count">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="extractKeywords()">Extract Keywords</button>
+                <div class="loading-spinner" id="seo-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Extracting keywords...</p>
+                </div>
+                <div class="result-container mt-3" id="seo-result">
+                    <!-- Keywords will appear here -->
+                </div>
+            </div>
+
+            <!-- AI Resume Builder Tool -->
+            <div id="resume-builder-tool" class="tool-container hidden">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-file-user me-2"></i> AI Resume Builder</h3>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="hideTool('resume-builder')">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="resume-name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="resume-name" placeholder="Your full name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="resume-email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="resume-email" placeholder="Your email">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="resume-phone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="resume-phone" placeholder="Your phone number">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="resume-title" class="form-label">Professional Title</label>
+                        <input type="text" class="form-control" id="resume-title" placeholder="e.g. Software Engineer">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="resume-summary" class="form-label">Professional Summary</label>
+                    <textarea class="form-control" id="resume-summary" rows="3" placeholder="Brief summary of your professional background"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="resume-experience" class="form-label">Work Experience</label>
+                    <textarea class="form-control" id="resume-experience" rows="5" placeholder="Describe your work experience (company names, positions, dates, responsibilities)"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="resume-education" class="form-label">Education</label>
+                    <textarea class="form-control" id="resume-education" rows="3" placeholder="Your educational background (degrees, institutions, years)"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="resume-skills" class="form-label">Skills</label>
+                    <textarea class="form-control" id="resume-skills" rows="2" placeholder="List your key skills (comma separated)"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="resume-template" class="form-label">Resume Template</label>
+                    <select class="form-select" id="resume-template">
+                        <option value="modern">Modern</option>
+                        <option value="professional" selected>Professional</option>
+                        <option value="creative">Creative</option>
+                        <option value="minimalist">Minimalist</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="generateResume()">Generate Resume</button>
+                <div class="loading-spinner" id="resume-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Generating your resume...</p>
+                </div>
+                <div class="result-container mt-3" id="resume-result">
+                    <!-- Resume will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">About AI Tools Hub</h2>
+                    <p class="lead">We provide free AI-powered tools to help you create better content, enhance your productivity, and streamline your workflow.</p>
+                    <p>Our tools leverage cutting-edge artificial intelligence technologies to deliver high-quality results instantly. Whether you need to generate text, create images, summarize content, or build a professional resume, we've got you covered.</p>
+                    <p>All our tools are completely free to use with no hidden costs or limitations.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://via.placeholder.com/600x400" alt="About AI Tools" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Contact Us</h2>
+                <p class="text-muted">Have questions or suggestions? We'd love to hear from you!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="contact-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contact-name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contact-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contact-email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="contact-subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="contact-subject" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="contact-message" class="form-label">Message</label>
+                                <textarea class="form-control" id="contact-message" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary px-4">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5 class="mb-3"><i class="fas fa-robot me-2"></i> AI Tools Hub</h5>
+                    <p class="small">Providing free AI tools to help you create amazing content and enhance your productivity.</p>
+                </div>
+                <div class="col-md-3 mb-3 mb-md-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#tools" class="text-white">Tools</a></li>
+                        <li class="mb-2"><a href="#about" class="text-white">About</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Connect</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white"><i class="fab fa-twitter me-2"></i> Twitter</a></li>
+                        <li class="mb-2"><a href="#" class="text-white"><i class="fab fa-facebook me-2"></i> Facebook</a></li>
+                        <li class="mb-2"><a href="#" class="text-white"><i class="fab fa-instagram me-2"></i> Instagram</a></li>
+                        <li class="mb-2"><a href="#" class="text-white"><i class="fab fa-github me-2"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2023 AI Tools Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show selected tool and hide others
+        function showTool(toolId) {
+            // Hide all tool containers
+            document.querySelectorAll('.tool-container').forEach(container => {
+                container.classList.add('hidden');
+            });
+            
+            // Show the selected tool
+            document.getElementById(`${toolId}-tool`).classList.remove('hidden');
+            
+            // Scroll to the tool section
+            document.getElementById(`${toolId}-tool`).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Hide tool and show tools grid
+        function hideTool(toolId) {
+            document.getElementById(`${toolId}-tool`).classList.add('hidden');
+            document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // AI Text Generator
+        function generateText() {
+            const prompt = document.getElementById('text-prompt').value;
+            const style = document.getElementById('text-style').value;
+            
+            if (!prompt) {
+                alert('Please enter a prompt');
+                return;
+            }
+            
+            document.getElementById('text-loading').style.display = 'block';
+            document.getElementById('text-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call an AI API here
+                const responses = {
+                    creative: `Here's a creative response to your prompt about "${prompt}":\n\nImagine a world where ${prompt.toLowerCase()} is the norm. The skies would shimmer with possibilities, and every day would bring new adventures. People would gather in town squares to share stories of how ${prompt.toLowerCase()} changed their lives, while artists would create masterpieces inspired by its essence.`,
+                    formal: `A formal analysis of "${prompt}":\n\nThe subject of ${prompt.toLowerCase()} has been extensively studied in academic circles. Current research suggests three primary aspects that warrant consideration: (1) the historical context, (2) contemporary applications, and (3) future implications. Each of these dimensions contributes to our comprehensive understanding of this important topic.`,
+                    casual: `Hey there! You asked about ${prompt.toLowerCase()}, right? Well, here's the deal - it's actually pretty cool! Most people don't realize that ${prompt.toLowerCase()} can be super helpful in everyday life. Like, just last week I used it to solve a problem with my morning routine. Who knew, right?`,
+                    technical: `Technical specifications regarding ${prompt.toLowerCase()}:\n\nParameters:\n- Input voltage: 3.3V ±5%\n- Operating temperature: -20°C to 85°C\n- Frequency response: 20Hz-20kHz ±1dB\n\n${prompt} operates on the principle of quantum flux modulation, with a nominal throughput of 1.21 gigawatts when properly calibrated. The system architecture employs a distributed neural network with 12-layer depth for optimal performance.`
+                };
+                
+                document.getElementById('text-result').innerHTML = `<p>${responses[style]}</p>`;
+                document.getElementById('text-loading').style.display = 'none';
+            }, 1500);
+        }
+        
+        // AI Image Generator
+        function generateImage() {
+            const prompt = document.getElementById('image-prompt').value;
+            const style = document.getElementById('image-style').value;
+            const size = document.getElementById('image-size').value;
+            
+            if (!prompt) {
+                alert('Please describe the image you want to generate');
+                return;
+            }
+            
+            document.getElementById('image-loading').style.display = 'block';
+            document.getElementById('image-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call an image generation API here
+                // For demo purposes, we'll use a placeholder
+                const placeholderUrl = `https://via.placeholder.com/${size}/6c63ff/ffffff?text=${encodeURIComponent(prompt)}`;
+                
+                document.getElementById('image-result').innerHTML = `
+                    <img src="${placeholderUrl}" alt="Generated image: ${prompt}" class="img-fluid rounded">
+                    <p class="mt-2"><small>Note: This is a placeholder. A real implementation would generate an actual AI image based on your prompt.</small></p>
+                `;
+                document.getElementById('image-loading').style.display = 'none';
+            }, 2000);
+        }
+        
+        // Text to Speech
+        function generateSpeech() {
+            const text = document.getElementById('tts-text').value;
+            const voice = document.getElementById('tts-voice').value;
+            const speed = document.getElementById('tts-speed').value;
+            
+            if (!text) {
+                alert('Please enter text to convert to speech');
+                return;
+            }
+            
+            document.getElementById('tts-loading').style.display = 'block';
+            document.getElementById('tts-result').innerHTML = '';
+            document.getElementById('play-btn').disabled = true;
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call a TTS API here
+                document.getElementById('tts-result').innerHTML = `
+                    <p>Audio generated successfully!</p>
+                    <p><small>Note: This is a simulation. A real implementation would generate actual speech audio.</small></p>
+                `;
+                document.getElementById('play-btn').disabled = false;
+                document.getElementById('tts-loading').style.display = 'none';
+            }, 2000);
+        }
+        
+        function playSpeech() {
+            alert('In a real implementation, this would play the generated audio');
+        }
+        
+        // Text Summarizer
+        function summarizeText() {
+            const text = document.getElementById('summarizer-text').value;
+            const length = document.getElementById('summarizer-length').value;
+            
+            if (!text) {
+                alert('Please enter text to summarize');
+                return;
+            }
+            
+            document.getElementById('summarizer-loading').style.display = 'block';
+            document.getElementById('summarizer-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call a summarization API here
+                const summaries = {
+                    short: `Key point: ${text.split('.')[0]}.`,
+                    medium: `Main ideas: ${text.split('.').slice(0, 3).join('. ')}.`,
+                    long: `Comprehensive summary: ${text.split(' ').slice(0, 50).join(' ')}... [continued]`
+                };
+                
+                document.getElementById('summarizer-result').innerHTML = `<p>${summaries[length]}</p>`;
+                document.getElementById('summarizer-loading').style.display = 'none';
+            }, 1500);
+        }
+        
+        // YouTube Content Generator
+        function generateYouTubeContent() {
+            const topic = document.getElementById('youtube-topic').value;
+            const style = document.getElementById('youtube-style').value;
+            
+            if (!topic) {
+                alert('Please enter a video topic');
+                return;
+            }
+            
+            document.getElementById('youtube-loading').style.display = 'block';
+            document.getElementById('youtube-titles').innerHTML = '';
+            document.getElementById('youtube-description').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call an AI API here
+                const titleStyles = {
+                    clickbait: [
+                        `YOU WON'T BELIEVE THIS ABOUT ${topic.toUpperCase()}!`,
+                        `The SHOCKING Truth About ${topic}`,
+                        `${topic} Experts HATE This Simple Trick!`
+                    ],
+                    professional: [
+                        `Comprehensive Analysis of ${topic}`,
+                        `${topic}: Best Practices and Strategies`,
+                        `The Complete Guide to ${topic}`
+                    ],
+                    casual: [
+                        `All About ${topic} - Super Easy!`,
+                        `My Thoughts on ${topic}`,
+                        `Let's Talk About ${topic}`
+                    ],
+                    educational: [
+                        `Understanding ${topic}: A Beginner's Guide`,
+                        `The Science Behind ${topic}`,
+                        `${topic} Explained in 5 Minutes`
+                    ]
+                };
+                
+                const descriptionStyles = {
+                    clickbait: `In this video, we reveal the shocking truth about ${topic} that nobody is talking about! You'll be amazed when you discover what we found out. Make sure to like and subscribe for more mind-blowing content!\n\n#${topic.replace(/\s+/g, '')} #Shocking #Revealed`,
+                    professional: `This video provides a comprehensive overview of ${topic}, covering its key aspects, current trends, and practical applications. Whether you're a beginner or an experienced professional, you'll find valuable insights in this presentation.\n\n00:00 Introduction\n02:15 Main Content\n08:30 Case Studies\n12:45 Conclusion\n\nConnect with us on LinkedIn for more professional content.`,
+                    casual: `Hey everyone! Today we're chatting about ${topic} - something I've been really into lately. Let me know in the comments what you think about ${topic} and if you have any experiences to share!\n\nThanks for watching, don't forget to hit that like button if you enjoyed the video :)`,
+                    educational: `In this educational video, we break down the concept of ${topic} into easy-to-understand components. Perfect for students or anyone looking to learn more about this subject.\n\nAdditional resources:\n- Book: "Understanding ${topic}" by John Doe\n- Website: www.${topic.replace(/\s+/g, '').toLowerCase()}.org\n\nSubscribe for more educational content!`
+                };
+                
+                let titlesHTML = '<ul>';
+                titleStyles[style].forEach(title => {
+                    titlesHTML += `<li>${title}</li>`;
+                });
+                titlesHTML += '</ul>';
+                
+                document.getElementById('youtube-titles').innerHTML = titlesHTML;
+                document.getElementById('youtube-description').innerHTML = `<p>${descriptionStyles[style]}</p>`;
+                document.getElementById('youtube-loading').style.display = 'none';
+            }, 2000);
+        }
+        
+        // Paraphrasing Tool
+        function paraphraseText() {
+            const text = document.getElementById('paraphrase-text').value;
+            const level = document.getElementById('paraphrase-level').value;
+            
+            if (!text) {
+                alert('Please enter text to paraphrase');
+                return;
+            }
+            
+            document.getElementById('paraphrase-loading').style.display = 'block';
+            document.getElementById('paraphrase-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call a paraphrasing API here
+                const paraphrases = {
+                    light: `Here's a lightly paraphrased version:\n\n${text.replace(/the/g, 'the').replace(/and/g, 'as well as').replace(/but/g, 'however')}`,
+                    medium: `Rewritten content with moderate changes:\n\n${text.split(' ').reverse().join(' ').replace(/\./g, '!').replace(/,/g, ';')}`,
+                    heavy: `Completely rephrased version:\n\nThe core concept being discussed revolves around ${text.substring(0, 20).toLowerCase()}... which can be understood through multiple perspectives that fundamentally alter conventional interpretations of this subject matter.`
+                };
+                
+                document.getElementById('paraphrase-result').innerHTML = `<p>${paraphrases[level]}</p>`;
+                document.getElementById('paraphrase-loading').style.display = 'none';
+            }, 1500);
+        }
+        
+        // SEO Keyword Extractor
+        function extractKeywords() {
+            const text = document.getElementById('seo-text').value;
+            const count = document.getElementById('keyword-count').value;
+            
+            if (!text) {
+                alert('Please enter content to analyze');
+                return;
+            }
+            
+            document.getElementById('seo-loading').style.display = 'block';
+            document.getElementById('seo-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call a keyword extraction API here
+                const words = text.toLowerCase().split(/\s+/);
+                const wordCount = {};
+                
+                words.forEach(word => {
+                    word = word.replace(/[^a-z]/g, '');
+                    if (word.length > 3) {
+                        wordCount[word] = (wordCount[word] || 0) + 1;
+                    }
+                });
+                
+                const sortedWords = Object.keys(wordCount).sort((a, b) => wordCount[b] - wordCount[a]);
+                const topKeywords = sortedWords.slice(0, parseInt(count));
+                
+                let keywordsHTML = '<p>Top keywords:</p><ul>';
+                topKeywords.forEach(keyword => {
+                    keywordsHTML += `<li>${keyword} (appears ${wordCount[keyword]} times)</li>`;
+                });
+                keywordsHTML += '</ul>';
+                
+                document.getElementById('seo-result').innerHTML = keywordsHTML;
+                document.getElementById('seo-loading').style.display = 'none';
+            }, 1500);
+        }
+        
+        // AI Resume Builder
+        function generateResume() {
+            const name = document.getElementById('resume-name').value;
+            const email = document.getElementById('resume-email').value;
+            const phone = document.getElementById('resume-phone').value;
+            const title = document.getElementById('resume-title').value;
+            const summary = document.getElementById('resume-summary').value;
+            const experience = document.getElementById('resume-experience').value;
+            const education = document.getElementById('resume-education').value;
+            const skills = document.getElementById('resume-skills').value;
+            const template = document.getElementById('resume-template').value;
+            
+            if (!name || !email || !summary) {
+                alert('Please fill in at least name, email and summary fields');
+                return;
+            }
+            
+            document.getElementById('resume-loading').style.display = 'block';
+            document.getElementById('resume-result').innerHTML = '';
+            
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // In a real implementation, you would call a resume generation API here
+                const resumeHTML = `
+                    <div class="resume-preview p-4 border rounded bg-white">
+                        <h3 class="text-center mb-4">${name}</h3>
+                        <p class="text-center mb-4">${title} | ${email} | ${phone}</p>
+                        
+                        <h5 class="border-bottom pb-2">Professional Summary</h5>
+                        <p>${summary}</p>
+                        
+                        <h5 class="border-bottom pb-2 mt-4">Work Experience</h5>
+                        <p>${experience || 'No experience provided'}</p>
+                        
+                        <h5 class="border-bottom pb-2 mt-4">Education</h5>
+                        <p>${education || 'No education provided'}</p>
+                        
+                        <h5 class="border-bottom pb-2 mt-4">Skills</h5>
+                        <p>${skills || 'No skills provided'}</p>
+                        
+                        <div class="mt-4 text-center">
+                            <button class="btn btn-primary me-2">Download PDF</button>
+                            <button class="btn btn-outline-primary">Print</button>
+                        </div>
+                        
+                        <p class="mt-4 small text-muted">Note: This is a preview. A real implementation would generate a properly formatted resume based on the selected template.</p>
+                    </div>
+                `;
+                
+                document.getElementById('resume-result').innerHTML = resumeHTML;
+                document.getElementById('resume-loading').style.display = 'none';
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
